@@ -36,6 +36,8 @@ public class DataManager : MonoBehaviour
             SaveData data = new SaveData();
             data.BestPlayer = TmpPlayer;
             data.BestScore = TmpScore;
+            BestPlayer = TmpPlayer;
+            BestScore = TmpScore;
 
             string json = JsonUtility.ToJson(data);
 
@@ -59,5 +61,10 @@ public class DataManager : MonoBehaviour
             BestPlayer = "";
             BestScore = 0;
         }
+    }
+
+    public string BuildString()
+    {
+        return BestPlayer + " : " + BestScore;
     }
 }

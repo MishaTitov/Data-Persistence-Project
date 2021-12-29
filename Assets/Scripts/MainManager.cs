@@ -59,7 +59,6 @@ public class MainManager : MonoBehaviour
         {
             if (Input.GetKeyDown(KeyCode.Space))
             {
-                DataManager.Instance.LoadHighScore();
                 SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
             }
         }
@@ -77,10 +76,11 @@ public class MainManager : MonoBehaviour
         GameOverText.SetActive(true);
         DataManager.Instance.TmpScore = m_Points;
         DataManager.Instance.SaveHighScore();
+        BuildBestScoreText(); 
     }
 
-    void BuildBestScoreText()
+    private void BuildBestScoreText()
     {
-        BestScoreText.text = "Best Score : " + DataManager.Instance.BestPlayer + " : " + DataManager.Instance.BestScore;
+        BestScoreText.text = "Best Score : " + DataManager.Instance.BuildString();
     }
 }
